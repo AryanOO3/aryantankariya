@@ -22,7 +22,7 @@ export default defineConfig({
         }
       }
     },
-    minify: 'terser',
+    minify: 'esbuild',
     sourcemap: false
   }
 })
