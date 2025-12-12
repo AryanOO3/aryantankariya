@@ -177,6 +177,9 @@ export default function Home() {
                       src="/profile-photo.jpg" 
                       alt="Profile" 
                       className="absolute inset-0 w-full h-full object-cover rounded-full z-20"
+                      width="256"
+                      height="256"
+                      loading="eager"
                     />
                     
                     {/* Enhanced inner glow effect */}

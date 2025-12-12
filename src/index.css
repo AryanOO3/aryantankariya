@@ -213,6 +213,18 @@ html {
   66% { transform: translateY(-5px) rotate(-1deg); }
 }
 
+/* Prevent layout shifts */
+.prevent-cls {
+  contain: layout style paint;
+}
+
+/* Image containers to prevent CLS */
+.image-container {
+  aspect-ratio: 16/9;
+  position: relative;
+  overflow: hidden;
+}
+
 @keyframes pulse-scale {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.05); }

@@ -57,9 +57,10 @@ export const measureCLS = () => {
 
 // Initialize performance monitoring
 export const initPerformanceMonitoring = () => {
-  if (process.env.NODE_ENV === 'development') {
-    measurePageLoad()
-    measureLCP()
-    measureCLS()
-  }
+  // Disabled to reduce console noise
+  // if (process.env.NODE_ENV === 'development') {
+  //   measurePageLoad()
+  //   measureLCP()
+  //   measureCLS()
+  // }
 }

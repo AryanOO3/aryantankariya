@@ -32,19 +32,22 @@ export default function OptimizedImage({
   }
 
   return (
-    <picture>
+    <div className={`relative overflow-hidden ${className}`}>
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+      )}
       <img
         src={src}
         srcSet={generateSrcSet(src)}
         sizes={sizes}
         alt={alt}
-        className={`transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${className}`}
+        className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
         loading={priority ? 'eager' : 'lazy'}
         decoding="async"
         onLoad={handleLoad}
         onError={handleError}
         {...props}
       />
-    </picture>
+    </div>
   )
 }
