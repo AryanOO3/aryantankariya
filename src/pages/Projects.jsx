@@ -38,12 +38,12 @@ export default function Projects() {
           
           {/* Completed Projects */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center">
               <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
                 Completed Projects
               </span>
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" role="list">
               {completedProjects.map((project, index) => (
                 <div
                   key={project.id}
@@ -129,12 +129,12 @@ export default function Projects() {
 
           {/* Work in Progress Projects */}
           <div>
-            <h2 className="text-3xl font-bold mb-8 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center">
               <span className="bg-gradient-to-r from-sky-400 to-blue-400 bg-clip-text text-transparent">
                 Work in Progress
               </span>
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" role="list">
               {wipProjects.map((project, index) => (
                 <div
                   key={project.id}

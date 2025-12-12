@@ -80,7 +80,7 @@ export default function Home() {
                   </motion.span>
                 </motion.div>
                 
-                <h1 className="text-6xl sm:text-8xl font-bold leading-tight text-gray-900 dark:text-white">
+                <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold leading-tight text-gray-900 dark:text-white">
                   Hi, I'm{' '}
                   <motion.span 
                     className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent inline-block"
@@ -258,7 +258,7 @@ export default function Home() {
               Let's Connect
             </motion.h2>
             
-            <div className="flex justify-center space-x-8">
+            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8">
               {[
                 { href: `mailto:${resumeData.personal.email}`, label: 'Email', icon: '📧', isEmail: true },
                 { href: resumeData.personal.linkedin, label: 'LinkedIn', icon: '💼', isEmail: false },
@@ -267,7 +267,7 @@ export default function Home() {
                 <motion.div
                   key={link.label}
                   onClick={() => link.isEmail ? setShowEmailModal(true) : window.open(link.href, '_blank')}
-                  className="group flex flex-col items-center space-y-3 p-6 rounded-2xl glass-strong border border-white/30 dark:border-white/20 hover:glass transition-all duration-300 card-hover shadow-glow cursor-pointer"
+                  className="group flex flex-col items-center space-y-3 p-4 sm:p-6 rounded-2xl glass-strong border border-white/30 dark:border-white/20 hover:glass transition-all duration-300 card-hover shadow-glow cursor-pointer w-full sm:w-auto"
                   aria-label={`${link.label} contact`}
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.95 }}

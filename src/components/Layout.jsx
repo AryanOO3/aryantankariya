@@ -43,10 +43,10 @@ export default function Layout() {
                 Portfolio
               </Link>
             </div>
-            <div className="flex items-center space-x-2" role="menubar">
+            <div className="flex items-center space-x-1 sm:space-x-2" role="menubar">
               <Link 
                 to="/" 
-                className={`relative px-5 py-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-transparent btn-glow ${
+                className={`relative px-3 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-transparent btn-glow text-sm sm:text-base ${
                   isActive('/') 
                     ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-glow hover:shadow-glow-lg' 
                     : 'text-black dark:text-blue-300 hover:text-blue-800 dark:hover:text-white glass hover:glass-strong'
@@ -58,7 +58,7 @@ export default function Layout() {
               </Link>
               <Link 
                 to="/projects" 
-                className={`relative px-5 py-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-transparent btn-glow ${
+                className={`relative px-3 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-transparent btn-glow text-sm sm:text-base ${
                   isActive('/projects') 
                     ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-glow hover:shadow-glow-lg' 
                     : 'text-black dark:text-blue-300 hover:text-blue-800 dark:hover:text-white glass hover:glass-strong'
@@ -70,7 +70,7 @@ export default function Layout() {
               </Link>
               <Link 
                 to="/resume" 
-                className={`relative px-5 py-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-transparent btn-glow ${
+                className={`relative px-3 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-transparent btn-glow text-sm sm:text-base ${
                   isActive('/resume') 
                     ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-glow hover:shadow-glow-lg' 
                     : 'text-black dark:text-blue-300 hover:text-blue-800 dark:hover:text-white glass hover:glass-strong'
