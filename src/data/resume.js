@@ -5,7 +5,7 @@ export const resumeData = {
     email: "tankariyaaryan@gmail.com",
     phone: "+91 9825863442",
     location: "Jamnagar, Gujarat",
-    website: "https://yourportfolio.com",
+    website: "https://aryantankariya.vercel.app",
     linkedin: "https://www.linkedin.com/in/aryantankariya",
     github: "https://github.com/AryanOO3"
   },
