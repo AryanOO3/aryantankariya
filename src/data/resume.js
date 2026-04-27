@@ -31,7 +31,7 @@ export const resumeData = {
   education: [
     {
       id: 1,
-      institution: "College Name",
+      institution: "Smt. C.Z.M.Gosrani BCA College, Jamnagar (Shaurashtra University Affiliated)",
       degree: "Bachelor of Computer Applications (BCA)",
       location: "Gujarat, India",
       startDate: "2023-07",
