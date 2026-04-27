@@ -133,7 +133,7 @@ export default function Resume() {
                   <div className="flex flex-col md:flex-row md:justify-between md:items-start">
                     <div>
                       <h3 className="text-xl font-bold text-black dark:text-white">{edu.degree}</h3>
-                      <p className="text-lg text-accent-400">{edu.institution}</p>
+                      <p className="text-lg text-accent-400">{edu.institution}{edu.institutionSub && <><br /><span className="text-base">{edu.institutionSub}</span></>}</p>
                       {edu.gpa && <p className="text-black/80 dark:text-gray-300">GPA: {edu.gpa}</p>}
                     </div>
                     <div className="text-black/60 dark:text-gray-400 text-sm">
