@@ -9,6 +9,8 @@ const Projects = lazy(() => import('./pages/Projects'))
 const ProjectPage = lazy(() => import('./pages/ProjectPage'))
 const Resume = lazy(() => import('./pages/Resume'))
 const ResumePrint = lazy(() => import('./pages/ResumePrint'))
+const GraphicDesign = lazy(() => import('./pages/GraphicDesign'))
+const DesignSkills = lazy(() => import('./pages/DesignSkills'))
 
 // Loading component
 const LoadingSpinner = lazy(() => import('./components/LoadingSpinner'))
@@ -33,6 +35,8 @@ function AnimatedRoutes() {
           <Route path="projects" element={<Projects />} />
           <Route path="projects/:slug" element={<ProjectPage />} />
           <Route path="resume" element={<Resume />} />
+          <Route path="design" element={<GraphicDesign />} />
+          <Route path="design/skills" element={<DesignSkills />} />
         </Route>
         <Route path="/resume/print" element={<ResumePrint />} />
       </Routes>
