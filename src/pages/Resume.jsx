@@ -19,46 +19,31 @@ export default function Resume() {
         </div>
         
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="flex flex-col lg:flex-row gap-8">
-        {/* Sticky TOC */}
-        <div className="lg:w-64 lg:sticky lg:top-8 lg:self-start">
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-2xl">
-            <h3 className="font-bold text-primary-400 mb-6">Contents</h3>
-            <nav className="space-y-3">
-              <a href="#contact" className="block text-sm text-black/80 dark:text-gray-300 hover:text-primary-400 transition-colors duration-300">Contact</a>
-              <a href="#summary" className="block text-sm text-black/80 dark:text-gray-300 hover:text-primary-400 transition-colors duration-300">Summary</a>
-              <a href="#experience" className="block text-sm text-black/80 dark:text-gray-300 hover:text-primary-400 transition-colors duration-300">Experience</a>
-              <a href="#education" className="block text-sm text-black/80 dark:text-gray-300 hover:text-primary-400 transition-colors duration-300">Education</a>
-              <a href="#skills" className="block text-sm text-black/80 dark:text-gray-300 hover:text-primary-400 transition-colors duration-300">Skills</a>
-              <a href="#projects" className="block text-sm text-black/80 dark:text-gray-300 hover:text-primary-400 transition-colors duration-300">Projects</a>
-            </nav>
-            <div className="mt-8 space-y-3">
-              <button
-                onClick={() => window.open('/resume.pdf', '_blank')}
-                className="block w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-center py-3 px-4 rounded-xl hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
-              >
-                Print View
-              </button>
-              <a
-                href="/resume.pdf"
-                download="Aryan_Tankariya_Resume.pdf"
-                className="block w-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-center py-3 px-4 rounded-xl hover:bg-white/20 transition-all duration-300"
-                onClick={(e) => {
-                  fetch('/resume.pdf', { method: 'HEAD' })
-                    .catch(() => {
-                      e.preventDefault()
-                      alert('Resume PDF not found. Please add resume.pdf to the public folder.')
-                    })
-                }}
-              >
-                Download PDF
-              </a>
-            </div>
-          </div>
-        </div>
+      {/* View + Download buttons */}
+      <div className="flex gap-3 mb-10">
+        <button
+          onClick={() => window.open('/resume.pdf', '_blank')}
+          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-2xl font-semibold shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+          View
+        </button>
+        <a
+          href="/resume.pdf"
+          download="Aryan_Tankariya_Resume.pdf"
+          className="inline-flex items-center gap-2 px-6 py-3 glass-strong border border-white/30 text-black dark:text-white rounded-2xl font-semibold hover:glass transition-all duration-300"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          Download PDF
+        </a>
+      </div>
 
-        {/* Main Content */}
-        <div className="flex-1 space-y-12">
+      <div className="space-y-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -195,7 +180,6 @@ export default function Resume() {
             </div>
           </section>
         </div>
-      </div>
         </div>
       </div>
     </PageTransition>

@@ -1,10 +1,108 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { designs, designCategories } from '../data/designs'
 import PageTransition from '../components/PageTransition'
 import InteractiveBackground from '../components/InteractiveBackground'
 import DesignModal from '../components/DesignModal'
+
+function DesignCard({ design, onClick }) {
+  const [loaded, setLoaded] = useState(false)
+  const [inView, setInView] = useState(false)
+  const ref = useRef(null)
+
+  // Detect dark mode from the html element
+  const isDark = document.documentElement.classList.contains('dark')
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect() } },
+      { rootMargin: '100px' }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div
+      ref={ref}
+      className="group relative glass-card rounded-3xl overflow-hidden cursor-pointer"
+      style={{ transform: 'translateZ(0)' }}
+      onClick={onClick}
+    >
+      {/* Fixed-height thumbnail — never shifts */}
+      <div className="relative h-52 sm:h-56 bg-black/10 overflow-hidden">
+        {/* Skeleton shimmer — color matches theme */}
+        {!loaded && (
+          <div className={`absolute inset-0 animate-pulse ${isDark ? 'bg-white/8' : 'bg-black/8'}`}>
+            <div className={`absolute inset-0 bg-gradient-to-r ${isDark ? 'from-white/0 via-white/6 to-white/0' : 'from-black/0 via-black/5 to-black/0'} animate-shimmer`} />
+          </div>
+        )}
+
+        {inView && (
+          design.type === 'video' ? (
+            <video
+              src={design.video}
+              className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${
+                loaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              autoPlay muted loop playsInline preload="none"
+              onCanPlay={() => setLoaded(true)}
+            />
+          ) : (
+            <img
+              src={design.image}
+              alt={design.title}
+              className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${
+                loaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              loading="lazy"
+              decoding="async"
+              onLoad={() => setLoaded(true)}
+            />
+          )
+        )}
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent" />
+
+        {/* Hover overlay */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="glass-strong rounded-full p-3 border border-white/30">
+            {design.type === 'video' ? (
+              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+            ) : (
+              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+              </svg>
+            )}
+          </div>
+        </div>
+
+        {/* Badges */}
+        <div className="absolute top-3 left-3 flex gap-2">
+          <span className="px-2.5 py-1 glass-strong text-white text-xs rounded-full border border-white/20">{design.category}</span>
+          {design.type === 'video' && (
+            <span className="px-2.5 py-1 bg-pink-500/80 text-white text-xs rounded-full">Video</span>
+          )}
+        </div>
+      </div>
+
+      {/* Card footer — fixed height so card never reflows */}
+      <div className="p-4 sm:p-5">
+        <h3 className="font-bold text-sm sm:text-base text-black dark:text-white group-hover:text-pink-400 transition-colors duration-300 font-display truncate">
+          {design.title}
+        </h3>
+        <div className="flex flex-wrap gap-1.5 mt-2">
+          {design.tools.map(tool => (
+            <span key={tool} className="px-2 py-0.5 glass-subtle text-primary-400 text-xs rounded-full border border-primary-500/30">
+              {tool}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function GraphicDesign() {
   const [activeCategory, setActiveCategory] = useState('All')
@@ -79,86 +177,17 @@ export default function GraphicDesign() {
 
           {/* Gallery grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            <AnimatePresence mode="popLayout">
-              {filtered.map((design, index) => (
-                <motion.div
-                  key={design.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.92 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.92 }}
-                  // Cap delay so last card never waits more than 0.3s
-                  transition={{ duration: 0.25, delay: Math.min(index * 0.04, 0.3) }}
-                  className="group relative glass-card rounded-3xl overflow-hidden glass-hover cursor-pointer"
-                  onClick={() => setSelectedDesign(design)}
-                >
-                  {/* Thumbnail */}
-                  <div className="relative overflow-hidden h-52 sm:h-56 bg-black/10">
-                    {design.type === 'video' ? (
-                      <video
-                        src={design.video}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="none"
-                      />
-                    ) : (
-                      <img
-                        src={design.image}
-                        alt={design.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent" />
-
-                    {/* Tap/hover overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="glass-strong rounded-full p-3 border border-white/30">
-                        {design.type === 'video' ? (
-                          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        ) : (
-                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                          </svg>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Badges */}
-                    <div className="absolute top-3 left-3 flex gap-2">
-                      <span className="px-2.5 py-1 glass-strong text-white text-xs rounded-full border border-white/20">
-                        {design.category}
-                      </span>
-                      {design.type === 'video' && (
-                        <span className="px-2.5 py-1 bg-pink-500/80 text-white text-xs rounded-full">
-                          Video
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Card footer */}
-                  <div className="p-4 sm:p-5">
-                    <h3 className="font-bold text-sm sm:text-base text-black dark:text-white group-hover:text-pink-400 transition-colors duration-300 font-display">
-                      {design.title}
-                    </h3>
-                    <div className="flex flex-wrap gap-1.5 mt-2">
-                      {design.tools.map(tool => (
-                        <span key={tool} className="px-2 py-0.5 glass-subtle text-primary-400 text-xs rounded-full border border-primary-500/30">
-                          {tool}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
+            {filtered.map((design, index) => (
+              <motion.div
+                key={design.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.35, delay: Math.min((index % 3) * 0.08, 0.16) }}
+              >
+                <DesignCard design={design} onClick={() => setSelectedDesign(design)} />
+              </motion.div>
+            ))}
           </div>
 
           {filtered.length === 0 && (

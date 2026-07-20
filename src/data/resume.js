@@ -10,7 +10,7 @@ export const resumeData = {
     github: "https://github.com/AryanOO3"
   },
   
-  summary: "Passionate full-stack developer and BCA student with expertise in building scalable web applications. Experienced in React, Node.js, Express, and PostgreSQL with a focus on creating innovative solutions for real-world problems.",
+  summary: "Passionate full-stack developer and graphic designer with a BCA background, experienced in building scalable web applications and crafting compelling visual identities. Proficient in React, Node.js, Express, and PostgreSQL on the development side, and Figma, Adobe Photoshop, Illustrator, Canva, and CorelDRAW on the design side — bringing both technical precision and creative vision to every project.",
   
   experience: [
     {
@@ -45,7 +45,8 @@ export const resumeData = {
     "Frontend": ["React", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"],
     "Backend": ["Node.js", "Express", "PostgreSQL", "RESTful APIs"],
     "Tools": ["Git", "GitHub", "Vite", "Netlify"],
-    "Other": ["Algorithm Development", "Problem Solving", "UI/UX Design"]
+    "Other": ["Algorithm Development", "Problem Solving", "UI/UX Design"],
+    "Graphic Design": ["Figma", "Adobe Photoshop", "Adobe Illustrator", "Canva", "CorelDRAW", "Branding & Identity", "Social Media Design", "Print Layout", "Motion Graphics"]
   },
   
   projects: [

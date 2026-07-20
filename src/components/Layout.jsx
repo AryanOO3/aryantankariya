@@ -33,7 +33,9 @@ export default function Layout() {
   }
 
   return (
-    <div className="min-h-screen transition-all duration-700 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-dark-950 dark:via-dark-900 dark:to-primary-950 text-gray-900 dark:text-white relative overflow-hidden">
+    <div className="min-h-screen transition-all duration-700 text-gray-900 dark:text-white relative">
+      {/* Full-document background — covers entire scroll height, not just viewport */}
+      <div className="fixed inset-0 -z-10 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-dark-950 dark:via-dark-900 dark:to-primary-950" />
       {/* Background blobs */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-primary-500/10 to-accent-500/10 dark:from-primary-500/20 dark:to-accent-500/20 rounded-full blur-3xl animate-float" />
