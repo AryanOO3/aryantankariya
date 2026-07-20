@@ -15,7 +15,7 @@
 //
 //  FOR VIDEOS add  type: 'video'  and use  video:  instead of  image:
 //    e.g. { id: 65, title: 'My Reel', category: 'Social Media', type: 'video',
-//            video: '/designs/port/Posts/myreel.mp4', description: '...', tools: ['Premiere'] }
+//            video: '/designs/port/Posts/myreel.mp4', description: '...', tools: ['Premiere  Pro Pro'] }
 //
 //  TIPS
 //  • Spaces in filenames are fine. Avoid apostrophes ( ' ) and plus signs ( + ) in filenames.
@@ -189,7 +189,7 @@ export const designs = [
     type: 'video',
     video: '/designs/port/Posts/Vasant Panchmi.mp4',
     description: 'Animated Vasant Panchami reel with festive motion graphics and transitions.',
-    tools: ['Photoshop', 'Premiere'],
+    tools: ['Photoshop', 'Premiere  Pro'],
   },
   {
     id: 21,
@@ -198,7 +198,7 @@ export const designs = [
     type: 'video',
     video: '/designs/port/Posts/Ram Mandir.mp4',
     description: 'Motion reel created for the Ram Mandir inauguration with cinematic transitions.',
-    tools: ['Photoshop', 'Premiere'],
+    tools: ['Photoshop', 'Premiere Pro'],
   },
   {
     id: 22,
@@ -207,7 +207,7 @@ export const designs = [
     type: 'video',
     video: '/designs/port/Posts/Ravindra Jadeja.mp4',
     description: 'Sports tribute reel for Ravindra Jadeja with dynamic motion and typography.',
-    tools: ['Photoshop', 'Premiere'],
+    tools: ['Photoshop', 'Premiere Pro'],
   },
 
   // ── Print Layout ──────────────────────────────────────────────────────────
@@ -233,7 +233,7 @@ export const designs = [
     category: 'Print Layout',
     image: '/designs/port/Prints/Entry Pass.png',
     description: 'Event entry pass design with QR placeholder, branding, and print-ready specs.',
-    tools: ['Illustrator', 'Photoshop'],
+    tools: ['Illustrator', 'Photoshop', 'Canva'],
   },
   {
     id: 26,
@@ -265,7 +265,7 @@ export const designs = [
     category: 'Print Layout',
     image: '/designs/port/Prints/Screenshot 2026-02-08 175350.png',
     description: 'Latest print layout with refined grid system and modern aesthetic.',
-    tools: ['Photoshop'],
+    tools: ['Photoshop' , 'Canva'],
   },
 
   // ── Certificates ──────────────────────────────────────────────────────────
@@ -275,7 +275,7 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/1.png',
     description: 'Formal certificate layout with elegant borders and structured typography.',
-    tools: ['Illustrator'],
+    tools: ['Illustrator', 'Canva'],
   },
   {
     id: 31,
@@ -283,7 +283,7 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/11.png',
     description: 'Clean certificate design with a modern minimalist approach.',
-    tools: ['Illustrator'],
+    tools: ['Illustrator', 'Canva'],
   },
   {
     id: 32,
@@ -291,7 +291,7 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/38.png',
     description: 'Certificate with decorative elements and a professional colour palette.',
-    tools: ['Illustrator'],
+    tools: ['Illustrator', 'Canva'],
   },
   {
     id: 33,
@@ -299,7 +299,7 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/50.png',
     description: 'Award-style certificate with bold heading and ornamental framing.',
-    tools: ['Illustrator'],
+    tools: ['Illustrator', 'Canva'],
   },
   {
     id: 34,
@@ -307,7 +307,7 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/8.png',
     description: 'Compact certificate layout optimised for A4 print output.',
-    tools: ['Illustrator'],
+    tools: ['Illustrator', 'Canva'],
   },
   {
     id: 35,
@@ -315,7 +315,7 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/Appreciation Certificates.png',
     description: 'Set of appreciation certificates designed for event recognition.',
-    tools: ['Illustrator', 'Photoshop'],
+    tools: ['Illustrator', 'Photoshop', 'Canva'],
   },
   {
     id: 36,
@@ -323,15 +323,15 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/certificate.png',
     description: 'General-purpose certificate template with flexible layout.',
-    tools: ['Illustrator'],
+    tools: ['Illustrator', 'Canva'],
   },
   {
     id: 37,
-    title: 'Graphic Designing Cert',
+    title: 'Graphic Designing Certificate',
     category: 'Certificates',
     image: '/designs/port/Certificates/graphic designing cert.png',
     description: 'Certificate of completion for a graphic design course.',
-    tools: ['Illustrator'],
+    tools: ['Illustrator', 'Canva'],
   },
   {
     id: 38,
@@ -339,7 +339,7 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/PPT.png',
     description: 'Certificate designed for a PowerPoint / presentation skills competition.',
-    tools: ['Photoshop'],
+    tools: ['Photoshop', 'Canva'],
   },
   {
     id: 39,
@@ -347,7 +347,7 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/Proficiency Certificates.png',
     description: 'Proficiency award certificates with tiered design for different achievement levels.',
-    tools: ['Illustrator'],
+    tools: ['Illustrator', 'Canva'],
   },
   {
     id: 40,
@@ -355,7 +355,7 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/Project.png',
     description: 'Project completion certificate with clean layout and institutional branding.',
-    tools: ['Illustrator'],
+    tools: ['Illustrator', 'Canva'],
   },
   {
     id: 41,
@@ -363,7 +363,7 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/Screenshot 2024-11-14 133835.png',
     description: 'Certificate layout exploration with decorative header and footer elements.',
-    tools: ['Photoshop'],
+    tools: ['Photoshop', 'Canva'],
   },
   {
     id: 42,
@@ -371,7 +371,7 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/Screenshot 2025-06-28 115207.png',
     description: 'Updated certificate layout with improved spacing and modern typeface.',
-    tools: ['Photoshop'],
+    tools: ['Photoshop', 'Canva'],
   },
   {
     id: 43,
@@ -379,7 +379,7 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/Sport Certificate.png',
     description: 'Sports achievement certificate with dynamic design and energetic colour palette.',
-    tools: ['Illustrator'],
+    tools: ['Illustrator', 'Canva'],
   },
   {
     id: 44,
@@ -387,7 +387,7 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/Teachers day.png',
     description: "Certificate of appreciation designed for Teacher's Day recognition.",
-    tools: ['Illustrator'],
+    tools: ['Illustrator', 'Canva'],
   },
   {
     id: 45,
@@ -395,7 +395,7 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/triumph.png',
     description: 'Victory and triumph themed certificate with gold accents and bold typography.',
-    tools: ['Illustrator'],
+    tools: ['Illustrator', 'Canva'],
   },
   {
     id: 46,
@@ -403,7 +403,7 @@ export const designs = [
     category: 'Certificates',
     image: '/designs/port/Certificates/ZICA.png',
     description: 'Official certificate design for ZICA with institutional branding guidelines.',
-    tools: ['Illustrator'],
+    tools: ['Illustrator', 'Canva'],
   },
 
   // ── UI/UX ─────────────────────────────────────────────────────────────────
@@ -535,7 +535,7 @@ export const designs = [
     category: 'Misc/Creative',
     image: '/designs/port/Randoms/Screenshot 2024-08-25 141652.png',
     description: 'Experimental design piece from an early creative exploration session.',
-    tools: ['Photoshop'],
+    tools: ['CorelDRAW'],
   },
   {
     id: 63,
@@ -543,7 +543,7 @@ export const designs = [
     category: 'Misc/Creative',
     image: '/designs/port/Randoms/Screenshot 2024-08-25 174600.png',
     description: 'Abstract composition with layered textures and colour blending.',
-    tools: ['Photoshop'],
+    tools: ['CorelDRAW'],
   },
   {
     id: 64,
@@ -551,7 +551,7 @@ export const designs = [
     category: 'Misc/Creative',
     image: '/designs/port/Randoms/Screenshot 2025-01-18 154329.png',
     description: 'Latest creative experiment with mixed media and digital illustration techniques.',
-    tools: ['Photoshop'],
+    tools: ['Illustrator'],
   },
 
 ]
