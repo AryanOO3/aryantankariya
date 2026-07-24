@@ -8,7 +8,7 @@ const navLinks = [
   { to: '/',        label: 'Home',     activeColor: 'from-blue-500 to-cyan-500',   ring: 'focus:ring-blue-500' },
   { to: '/projects',label: 'Projects', activeColor: 'from-blue-500 to-cyan-500',   ring: 'focus:ring-blue-500' },
   { to: '/resume',  label: 'Resume',   activeColor: 'from-blue-500 to-cyan-500',   ring: 'focus:ring-blue-500' },
-  { to: '/design',  label: 'Design',   activeColor: 'from-pink-500 to-purple-500', ring: 'focus:ring-pink-500' },
+  { to: '/design',  label: 'Graphic Designing', activeColor: 'from-pink-500 to-purple-500', ring: 'focus:ring-pink-500' },
 ]
 
 export default function Layout() {
@@ -53,7 +53,7 @@ export default function Layout() {
             {/* Logo */}
             <Link
               to="/"
-              className="text-xl sm:text-2xl font-bold text-gradient hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-2 py-1 shimmer-effect"
+              className="text-xl sm:text-2xl font-bold text-gradient focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg px-2 py-1"
               aria-label="Portfolio home"
             >
               Portfolio
