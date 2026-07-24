@@ -1,16 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { visualizer } from 'rollup-plugin-visualizer'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    visualizer({
-      filename: 'dist/stats.html',
-      open: true,
-      gzipSize: true
-    })
   ],
   build: {
     rollupOptions: {
@@ -18,11 +11,19 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
           animations: ['framer-motion'],
-          lottie: ['lottie-react']
-        }
-      }
+          lottie: ['lottie-react'],
+        },
+      },
     },
-    minify: 'esbuild',
-    sourcemap: false
-  }
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info'],
+      },
+    },
+    sourcemap: false,
+    chunkSizeWarningLimit: 600,
+  },
 })

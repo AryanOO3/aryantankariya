@@ -18,54 +18,66 @@
 @layer utilities {
   .glass {
     background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
   }
-  
+
   .glass-strong {
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.25);
   }
-  
+
   .dark .glass-strong {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.15);
   }
-  
+
   .glass-subtle {
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.15);
   }
-  
+
   .dark .glass-subtle {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
+
   .glass-card {
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.25);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   }
-  
+
   .dark .glass-card {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   }
-  
+
+  /* On mobile, skip backdrop-filter — it's the #1 perf killer on low-end devices */
+  @media (max-width: 640px) {
+    .glass, .glass-strong, .glass-subtle, .glass-card {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+    .glass-hover:hover {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+
   .shimmer-effect {
     position: relative;
     overflow: hidden;
   }
-  
+
   .shimmer-effect::before {
     content: '';
     position: absolute;
@@ -76,19 +88,19 @@
     background: var(--shimmer);
     animation: shimmer 2.5s linear infinite;
   }
-  
+
   .glass-hover {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   .glass-hover:hover {
     background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-color: rgba(255, 255, 255, 0.35);
     transform: translateY(-2px);
   }
-  
+
   .dark .glass-hover:hover {
     background: rgba(255, 255, 255, 0.12);
     border-color: rgba(255, 255, 255, 0.25);
@@ -105,7 +117,7 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  
+
   .shimmer-effect::before {
     animation: none !important;
   }
@@ -124,14 +136,12 @@
   border: 0;
 }
 
-/* Improved text gradients */
+/* Text gradient — static, no animation */
 .text-gradient {
   background: linear-gradient(135deg, #3b82f6, #1e40af, #0ea5e9);
-  background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient-xy 3s ease infinite;
 }
 
 /* Card hover effects */
@@ -142,17 +152,6 @@
 .card-hover:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.1);
-}
-
-.sr-only.focus:not(.focus\:not-sr-only):focus {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: inherit;
-  margin: inherit;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
 }
 
 /* Enhanced button hover effects */
@@ -206,13 +205,6 @@ html {
   background: linear-gradient(135deg, #2563eb, #db2777);
 }
 
-/* Enhanced animations */
-@keyframes float-delayed {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-15px) rotate(2deg); }
-  66% { transform: translateY(-5px) rotate(-1deg); }
-}
-
 /* Prevent layout shifts */
 .prevent-cls {
   contain: layout style paint;
@@ -225,31 +217,25 @@ html {
   overflow: hidden;
 }
 
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-15px) rotate(2deg); }
+  66% { transform: translateY(-5px) rotate(-1deg); }
+}
+
 @keyframes pulse-scale {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.05); }
 }
 
-@keyframes gradient-xy {
-  0%, 100% { 
-    background-size: 400% 400%;
-    background-position: left center;
-  }
-  50% { 
-    background-size: 200% 200%;
-    background-position: right center;
-  }
-}
-
 @keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
-/* Hide default cursor */
-/* * {
-  cursor: none !important;
-} */
+.animate-shimmer {
+  animation: shimmer 1.6s ease-in-out infinite;
+}
 
 /* Selection styles */
 ::selection {
@@ -260,15 +246,6 @@ html {
 ::-moz-selection {
   background: rgba(59, 130, 246, 0.2);
   color: inherit;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.animate-shimmer {
-  animation: shimmer 1.6s ease-in-out infinite;
 }
 
 /* Hide scrollbar but keep scroll functionality */
@@ -285,20 +262,20 @@ html {
   nav, footer, .no-print {
     display: none !important;
   }
-  
+
   body {
     font-size: 12pt;
     line-height: 1.4;
   }
-  
+
   h1, h2, h3 {
     page-break-after: avoid;
   }
-  
+
   img {
     max-width: 100% !important;
   }
-  
+
   .glass, .glass-strong {
     background: white !important;
     backdrop-filter: none !important;

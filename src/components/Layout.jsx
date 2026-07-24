@@ -36,13 +36,10 @@ export default function Layout() {
     <div className="min-h-screen transition-all duration-700 text-gray-900 dark:text-white relative">
       {/* Full-document background — covers entire scroll height, not just viewport */}
       <div className="fixed inset-0 -z-10 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-dark-950 dark:via-dark-900 dark:to-primary-950" />
-      {/* Background blobs */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-primary-500/10 to-accent-500/10 dark:from-primary-500/20 dark:to-accent-500/20 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-l from-accent-500/8 to-secondary-500/8 dark:from-accent-500/15 dark:to-secondary-500/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-3/4 left-1/2 w-64 h-64 bg-gradient-to-br from-primary-400/6 to-purple-400/6 dark:from-primary-400/12 dark:to-purple-400/12 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
-        <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-gradient-to-tl from-pink-400/4 to-blue-400/4 dark:from-pink-400/8 dark:to-blue-400/8 rounded-full blur-2xl animate-bounce-gentle" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-1/3 left-1/3 w-32 h-32 bg-gradient-to-tr from-green-400/5 to-cyan-400/5 dark:from-green-400/10 dark:to-cyan-400/10 rounded-full blur-xl animate-pulse-glow" style={{ animationDelay: '3s' }} />
+      {/* Static background blobs — no animation to keep mobile smooth */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-primary-500/8 to-accent-500/8 dark:from-primary-500/15 dark:to-accent-500/15 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-l from-accent-500/6 to-secondary-500/6 dark:from-accent-500/10 dark:to-secondary-500/10 rounded-full blur-3xl" />
       </div>
 
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-600 text-white px-4 py-2 rounded-lg z-50 backdrop-blur-sm">

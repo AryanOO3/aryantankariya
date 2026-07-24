@@ -1,27 +1,25 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { designs, designCategories } from '../data/designs'
+import { useTheme } from '../contexts/ThemeContext'
 import PageTransition from '../components/PageTransition'
-import InteractiveBackground from '../components/InteractiveBackground'
 import DesignModal from '../components/DesignModal'
 
-function DesignCard({ design, onClick }) {
+function DesignCard({ design, onClick, isDark }) {
   const [loaded, setLoaded] = useState(false)
   const [inView, setInView] = useState(false)
   const ref = useRef(null)
 
-  // Detect dark mode from the html element
-  const isDark = document.documentElement.classList.contains('dark')
+  const handleIntersect = useCallback(([entry], observer) => {
+    if (entry.isIntersecting) { setInView(true); observer.disconnect() }
+  }, [])
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect() } },
-      { rootMargin: '100px' }
-    )
+    const observer = new IntersectionObserver(handleIntersect, { rootMargin: '150px' })
     if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
-  }, [])
+  }, [handleIntersect])
 
   return (
     <div
@@ -32,7 +30,7 @@ function DesignCard({ design, onClick }) {
     >
       {/* Fixed-height thumbnail — never shifts */}
       <div className="relative h-52 sm:h-56 bg-black/10 overflow-hidden">
-        {/* Skeleton shimmer — color matches theme */}
+        {/* Skeleton shimmer */}
         {!loaded && (
           <div className={`absolute inset-0 animate-pulse ${isDark ? 'bg-white/8' : 'bg-black/8'}`}>
             <div className={`absolute inset-0 bg-gradient-to-r ${isDark ? 'from-white/0 via-white/6 to-white/0' : 'from-black/0 via-black/5 to-black/0'} animate-shimmer`} />
@@ -87,7 +85,7 @@ function DesignCard({ design, onClick }) {
         </div>
       </div>
 
-      {/* Card footer — fixed height so card never reflows */}
+      {/* Card footer */}
       <div className="p-4 sm:p-5">
         <h3 className="font-bold text-sm sm:text-base text-black dark:text-white group-hover:text-pink-400 transition-colors duration-300 font-display truncate">
           {design.title}
@@ -107,6 +105,7 @@ function DesignCard({ design, onClick }) {
 export default function GraphicDesign() {
   const [activeCategory, setActiveCategory] = useState('All')
   const [selectedDesign, setSelectedDesign] = useState(null)
+  const { isDark } = useTheme()
 
   const filtered = activeCategory === 'All'
     ? designs
@@ -114,7 +113,6 @@ export default function GraphicDesign() {
 
   return (
     <PageTransition>
-      <InteractiveBackground />
       <div className="min-h-screen py-20 relative">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/3 left-1/4 w-96 h-96 glass-subtle rounded-full blur-3xl opacity-20" />
@@ -127,7 +125,7 @@ export default function GraphicDesign() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4 }}
             className="text-center mb-10"
           >
             <div className="glass-card rounded-3xl p-6 sm:p-8 mx-auto max-w-4xl">
@@ -152,12 +150,7 @@ export default function GraphicDesign() {
           </motion.div>
 
           {/* Category filter — scrollable on mobile */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="mb-10"
-          >
+          <div className="mb-10">
             <div className="flex gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:justify-center sm:overflow-visible scrollbar-hide">
               {designCategories.map(cat => (
                 <button
@@ -173,19 +166,19 @@ export default function GraphicDesign() {
                 </button>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Gallery grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map((design, index) => (
               <motion.div
                 key={design.id}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.35, delay: Math.min((index % 3) * 0.08, 0.16) }}
+                transition={{ duration: 0.3, delay: Math.min((index % 3) * 0.06, 0.12) }}
               >
-                <DesignCard design={design} onClick={() => setSelectedDesign(design)} />
+                <DesignCard design={design} onClick={() => setSelectedDesign(design)} isDark={isDark} />
               </motion.div>
             ))}
           </div>

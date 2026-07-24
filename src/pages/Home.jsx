@@ -24,32 +24,11 @@ export default function Home() {
         {/* Cursor with Trail */}
         <CursorTrail />
         
-        {/* Enhanced Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div 
-            className="absolute top-20 left-20 w-2 h-2 bg-primary-400/30 rounded-full"
-            animate={{
-              scale: [1, 1.5, 1],
-              opacity: [0.3, 0.8, 0.3]
-            }}
-            transition={{ duration: 3, repeat: Infinity, delay: 0 }}
-          />
-          <motion.div 
-            className="absolute top-40 right-32 w-1 h-1 bg-accent-400/40 rounded-full"
-            animate={{
-              scale: [1, 2, 1],
-              opacity: [0.2, 0.6, 0.2]
-            }}
-            transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-          />
-          <motion.div 
-            className="absolute bottom-32 left-40 w-1.5 h-1.5 bg-primary-300/25 rounded-full"
-            animate={{
-              scale: [1, 1.8, 1],
-              opacity: [0.25, 0.7, 0.25]
-            }}
-            transition={{ duration: 5, repeat: Infinity, delay: 2 }}
-          />
+        {/* Static background dots */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-20 w-2 h-2 bg-primary-400/30 rounded-full" />
+          <div className="absolute top-40 right-32 w-1 h-1 bg-accent-400/40 rounded-full" />
+          <div className="absolute bottom-32 left-40 w-1.5 h-1.5 bg-primary-300/25 rounded-full" />
         </div>
         
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
@@ -182,69 +161,16 @@ export default function Home() {
                       loading="eager"
                     />
                     
-                    {/* Enhanced inner glow effect */}
-                    <motion.div
-                      className="absolute inset-4 bg-gradient-to-br from-white/30 via-white/10 to-transparent rounded-full"
-                      animate={{
-                        opacity: [0.4, 0.8, 0.4],
-                        scale: [1, 1.1, 1]
-                      }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-                    <motion.div
-                      className="absolute inset-8 bg-gradient-to-tl from-cyan-300/20 to-pink-300/20 rounded-full blur-sm"
-                      animate={{
-                        rotate: [0, -360]
-                      }}
-                      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                    />
+                    {/* Static inner glow */}
+                    <div className="absolute inset-4 bg-gradient-to-br from-white/30 via-white/10 to-transparent rounded-full" />
                   </motion.div>
                 </motion.div>
                 
-                {/* Enhanced Floating elements with improved gradients */}
-                <motion.div 
-                  className="absolute -top-4 -right-4 w-10 h-10 bg-gradient-to-br from-accent-400 via-pink-400 to-accent-600 rounded-full shadow-glow-accent"
-                  animate={{ 
-                    y: [-10, 10, -10],
-                    rotate: [0, 180, 360]
-                  }}
-                  whileHover={{ scale: 1.4 }}
-                  transition={{ 
-                    y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-                    rotate: { duration: 6, repeat: Infinity, ease: "linear" }
-                  }}
-                />
-                <motion.div 
-                  className="absolute -bottom-6 -left-6 w-8 h-8 bg-gradient-to-br from-primary-400 via-blue-400 to-primary-600 rounded-full shadow-glow"
-                  animate={{ 
-                    y: [10, -10, 10],
-                    x: [-5, 5, -5]
-                  }}
-                  whileHover={{ scale: 1.5 }}
-                  transition={{ 
-                    y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-                    x: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-                  }}
-                />
-                <motion.div 
-                  className="absolute top-1/2 -left-8 w-6 h-6 bg-gradient-to-br from-purple-400 via-indigo-400 to-pink-500 rounded-full shadow-glow"
-                  animate={{ 
-                    scale: [1, 1.5, 1],
-                    opacity: [0.6, 1, 0.6]
-                  }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                />
-                <motion.div 
-                  className="absolute top-1/4 -right-12 w-4 h-4 bg-gradient-to-br from-green-400 to-cyan-400 rounded-full shadow-glow"
-                  animate={{ 
-                    rotate: [0, 360],
-                    scale: [1, 1.3, 1]
-                  }}
-                  transition={{ 
-                    rotate: { duration: 8, repeat: Infinity, ease: "linear" },
-                    scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-                  }}
-                />
+                {/* Floating accent dots — CSS animation instead of JS-driven framer-motion */}
+                <div className="absolute -top-4 -right-4 w-10 h-10 bg-gradient-to-br from-accent-400 via-pink-400 to-accent-600 rounded-full shadow-glow-accent animate-bounce-gentle" />
+                <div className="absolute -bottom-6 -left-6 w-8 h-8 bg-gradient-to-br from-primary-400 via-blue-400 to-primary-600 rounded-full shadow-glow animate-float" style={{ animationDelay: '1s' }} />
+                <div className="absolute top-1/2 -left-8 w-6 h-6 bg-gradient-to-br from-purple-400 via-indigo-400 to-pink-500 rounded-full shadow-glow" />
+                <div className="absolute top-1/4 -right-12 w-4 h-4 bg-gradient-to-br from-green-400 to-cyan-400 rounded-full shadow-glow animate-float" style={{ animationDelay: '2s' }} />
               </div>
             </motion.div>
           </div>

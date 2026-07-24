@@ -3,44 +3,16 @@ import { useReducedMotion } from '../hooks/useReducedMotion'
 
 export default function PageTransition({ children, className = '' }) {
   const prefersReducedMotion = useReducedMotion()
-  
-  const pageVariants = prefersReducedMotion ? {} : {
-    initial: { 
-      opacity: 0, 
-      scale: 0.95,
-      rotateX: -10,
-      y: 50
-    },
-    in: { 
-      opacity: 1, 
-      scale: 1,
-      rotateX: 0,
-      y: 0
-    },
-    out: { 
-      opacity: 0, 
-      scale: 1.05,
-      rotateX: 10,
-      y: -50
-    }
-  }
-  
-  const pageTransition = prefersReducedMotion ? {} : {
-    type: 'spring',
-    stiffness: 300,
-    damping: 30,
-    duration: 0.6
-  }
-  
+
+  if (prefersReducedMotion) return <div className={className}>{children}</div>
+
   return (
     <motion.div
-      initial="initial"
-      animate="in"
-      exit="out"
-      variants={pageVariants}
-      transition={pageTransition}
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.22, ease: 'easeOut' }}
       className={className}
-      style={{ perspective: 1000 }}
     >
       {children}
     </motion.div>
