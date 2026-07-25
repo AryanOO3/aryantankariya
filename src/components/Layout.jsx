@@ -46,7 +46,7 @@ export default function Layout() {
         Skip to main content
       </a>
 
-      <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/20 dark:border-white/10 shadow-lg shadow-black/5" role="navigation" aria-label="Main navigation">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-dark-950/95 border-b border-gray-200 dark:border-white/10 shadow-sm" role="navigation" aria-label="Main navigation">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 sm:h-20">
 
@@ -115,7 +115,7 @@ export default function Layout() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25, ease: 'easeInOut' }}
-              className="sm:hidden overflow-hidden border-t border-white/10"
+              className="sm:hidden overflow-hidden border-t border-gray-200 dark:border-white/10 bg-white/95 dark:bg-dark-950/95"
             >
               <div className="px-4 py-3 flex flex-col gap-2">
                 {navLinks.map((link, i) => (

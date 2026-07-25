@@ -220,8 +220,8 @@ export default function DesignModal({ design, onClose }) {
           </div>
 
           {/* Footer */}
-          <div className="px-4 sm:px-6 py-3 sm:py-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-            <p className="text-black/70 dark:text-white/70 text-xs sm:text-sm flex-1 leading-relaxed">
+          <div className="px-4 sm:px-6 py-3 sm:py-4 border-t border-white/10 bg-black/40 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+            <p className="text-white text-xs sm:text-sm flex-1 leading-relaxed">
               {design.description || `${design.category} design work`}
             </p>
             <div className="flex flex-wrap gap-1.5">
