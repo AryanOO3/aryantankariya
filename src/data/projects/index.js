@@ -23,7 +23,7 @@ export const wipProjects = [
     title: "Weather Dashboard",
     description: "A responsive, real-time weather dashboard with live rain radar and satellite maps. No API key required — works instantly out of the box.",
     technologies: ["HTML", "CSS", "JavaScript", "Leaflet.js", "Chart.js", "Open-Meteo API", "RainViewer API"],
-    image: null,
+    image: "/Weather-logo.jpg",
     screenshots: [],
     github: "https://github.com/AryanOO3/Weather",
     demo: "https://aryanoo3.github.io/Weather",
