@@ -3,12 +3,10 @@ import { motion } from 'framer-motion'
 import { completedProjects, wipProjects } from '../data/projects'
 import OptimizedImage from '../components/OptimizedImage'
 import PageTransition from '../components/PageTransition'
-import InteractiveBackground from '../components/InteractiveBackground'
 
 export default function Projects() {
   return (
     <PageTransition>
-      <InteractiveBackground />
       <div className="min-h-screen py-20 relative">
         {/* Background glass elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -141,12 +139,18 @@ export default function Projects() {
                   <div className="relative glass-card rounded-3xl overflow-hidden glass-hover group-hover:border-primary-500/50">
                     <Link to={`/projects/${project.slug}`} aria-label={`View ${project.title} project details`} className="block">
                       <div className="relative overflow-hidden">
-                        <OptimizedImage
-                          src={project.image}
-                          alt={`${project.title} project screenshot`}
-                          className="w-full h-56 object-cover"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
+                        {project.image ? (
+                          <OptimizedImage
+                            src={project.image}
+                            alt={`${project.title} project screenshot`}
+                            className="w-full h-56 object-cover"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          />
+                        ) : (
+                          <div className="w-full h-56 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
+                            <span className="text-5xl opacity-30">🚧</span>
+                          </div>
+                        )}
                         <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent"></div>
                       </div>
                     

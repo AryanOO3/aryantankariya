@@ -19,48 +19,24 @@ export const completedProjects = [
 export const wipProjects = [
   {
     id: 2,
-    slug: "ecommerce-platform",
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution built with React and Node.js",
-    technologies: ["React", "Node.js", "MongoDB", "Express"],
-    image: "/api/placeholder/400/250",
-    screenshots: ["/api/placeholder/800/500", "/api/placeholder/800/500"],
-    github: "https://github.com/yourusername/ecommerce",
-    demo: "https://your-ecommerce-demo.com",
-    featured: true,
-    role: "Full-Stack Developer",
-    responsibilities: ["Frontend development with React", "Backend API design", "Database architecture", "Payment integration"],
-    metrics: ["50% faster load times", "99.9% uptime", "500+ active users"]
-  },
-  {
-    id: 3,
-    slug: "task-management",
-    title: "Task Management App",
-    description: "A collaborative task management application with real-time updates",
-    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-    image: "/api/placeholder/400/250",
-    screenshots: ["/api/placeholder/800/500", "/api/placeholder/800/500"],
-    github: "https://github.com/yourusername/task-app",
-    demo: "https://your-task-app.com",
-    featured: true,
-    role: "Frontend Developer",
-    responsibilities: ["Real-time collaboration features", "Responsive UI design", "Firebase integration"],
-    metrics: ["Real-time sync", "Mobile-first design", "100+ teams using"]
-  },
-  {
-    id: 4,
-    slug: "weather-dashboard",
+    slug: "weather",
     title: "Weather Dashboard",
-    description: "A responsive weather dashboard with location-based forecasts",
-    technologies: ["JavaScript", "API Integration", "Chart.js"],
-    image: "/api/placeholder/400/250",
-    screenshots: ["/api/placeholder/800/500"],
-    github: "https://github.com/yourusername/weather-app",
-    demo: "https://your-weather-app.com",
-    featured: false,
+    description: "A responsive, real-time weather dashboard with live rain radar and satellite maps. No API key required — works instantly out of the box.",
+    technologies: ["HTML", "CSS", "JavaScript", "Leaflet.js", "Chart.js", "Open-Meteo API", "RainViewer API"],
+    image: null,
+    screenshots: [],
+    github: "https://github.com/AryanOO3/Weather",
+    demo: "https://aryanoo3.github.io/Weather",
+    featured: true,
     role: "Frontend Developer",
-    responsibilities: ["Weather API integration", "Data visualization", "Responsive design"],
-    metrics: ["5-day forecasts", "Location-based", "Interactive charts"]
+    responsibilities: [
+      "Integrated Open-Meteo API for real-time weather, hourly and 5-day forecast data",
+      "Built interactive rain radar and satellite map with time scrubber using Leaflet.js and RainViewer",
+      "Designed 48-hour temperature trend chart using Chart.js",
+      "Implemented browser geolocation with localStorage persistence to skip repeated prompts",
+      "Built fully responsive layout supporting mobile, tablet and desktop"
+    ],
+    metrics: ["No API key needed", "Real-time radar", "5-day forecast", "Mobile-friendly", "Hosted on GitHub Pages"]
   }
 ]
 
